@@ -16,7 +16,7 @@ const Weather: React.FC<Props> = ({data}) => {
 
         switch(data.current.condition.text.toLowerCase()) {
             case 'sunny':
-                color = '#D9E33A';
+                color = '#CACA1C';
                 opacity = 1;
                 break;
             case 'clear':
@@ -36,7 +36,7 @@ const Weather: React.FC<Props> = ({data}) => {
                 opacity = 1;
                 break;
             case 'mist':
-                color = '#EDEEE4';
+                color = '#BCBDA9';
                 opacity = 1;
                 break;
             case 'patchy rain nearby':

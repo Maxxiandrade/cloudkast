@@ -141,3 +141,26 @@ body{
   width: 100%;
   z-index: 1; /* Asegura que el componente Astro esté por encima del contenido principal */
 }
+
+/* HTML: <div class="loader"></div> */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Establece la altura al 100% del viewport */
+}
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #000 transparent;
+  animation: l1 1s infinite;
+}
+
+@keyframes l1 {
+  to {
+    transform: rotate(.5turn);
+  }
+}

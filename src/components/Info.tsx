@@ -30,6 +30,7 @@ const Info: React.FC<Props> = ({ place }) => {
   const navigate = useNavigate()
   const [info, setInfo] = useState<ForecastDay[] | null>(null);
   const [toggleAstro, setToggleAstro] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchInfo = async () => {
     try {
@@ -43,10 +44,12 @@ const Info: React.FC<Props> = ({ place }) => {
   };
 
   useEffect(() => {
+    setLoading(true)
     const getInfo = async () => {
       const data = await fetchInfo();
       if (data) {
         setInfo(data.forecast.forecastday);
+        setLoading(false)
       }
     };
     getInfo();
@@ -70,64 +73,70 @@ const Info: React.FC<Props> = ({ place }) => {
 
   return (
     <>
-    <div className="container" style={{ minHeight: toggleAstro ? '100vh' : 'auto' }}>
-    <button className="button" onClick={()=>navigate('/home')}>Back</button>
-      <div>
-        {info?.map((info, index) => (
-            <div key={index}>
-            <h1>
-              {location.name} - {info.date}
-            </h1>
-            <Actual info={info} />
+      <div className="container" style={{ minHeight: toggleAstro ? '100vh' : 'auto' }}>
+        <button className="button" onClick={() => navigate('/home')}>Back</button>
+        <div>
+          {loading ? (
+            <div className="div-container">
+                <div className="loader"></div>
+            </div>
+          ) : (
+            <>
+              {info?.map((info, index) => (
+                <div key={index}>
+                  <h1>
+                    {location.name} - {info.date}
+                  </h1>
+                  <Actual info={info} />
 
-            <div className="hour-grid">
-  {info.hour.map((hour, hourIndex) => {
-    const timeParts = hour.time.split(" ")[1].split(":");
-    const hourPart = timeParts[0];
-    const minutePart = timeParts[1];
-    const conditionText = hour.condition.text.length > 15 ? `${hour.condition.text.slice(0, 15)}...` : hour.condition.text; // Truncar el texto si es demasiado largo
-    
-    return (
-      <div className="hour-item" key={hourIndex}>
-        <div className="hour-time">
-          {hourPart}:{minutePart}
-        </div>
-        <div className="hour-condition">
-          {conditionText}{" "}
-          <img src={hour.condition.icon} alt="icon_hour" className="icon" />
-        </div>
-      </div>
-    );
-  })}
+                  <div className="hour-grid">
+                    {info.hour.map((hour, hourIndex) => {
+                      const timeParts = hour.time.split(" ")[1].split(":");
+                      const hourPart = timeParts[0];
+                      const minutePart = timeParts[1];
+                      const conditionText = hour.condition.text.length > 15 ? `${hour.condition.text.slice(0, 15)}...` : hour.condition.text;
 
-</div>
+                      return (
+                        <div className="hour-item" key={hourIndex}>
+                          <div className="hour-time">
+                            {hourPart}:{minutePart}
+                          </div>
+                          <div className="hour-condition">
+                            {conditionText}{" "}
+                            <img src={hour.condition.icon} alt="icon_hour" className="icon" />
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
 
-            <button
-              onClick={handleToggleAstro}
-              className="button"
-              >
-              Toggle Astro information
-            </button>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <label style={{ display: "block", marginTop: "10px", fontSize: "1.5rem" }}>cloudKast</label>
-            {toggleAstro && (<>
-            
-        <div className="astro-container" ref={astroRef}>
-            <br />
-          <Astro info={info} />
-        </div>
+                  <button
+                    onClick={handleToggleAstro}
+                    className="button"
+                  >
+                    Toggle Astro information
+                  </button>
+
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <label style={{ display: "block", marginTop: "10px", fontSize: "1.5rem" }}>cloudKast</label>
+                  {toggleAstro && (
+                    <div className="astro-container" ref={astroRef}>
+                      <br />
+                      <Astro info={info} />
+                    </div>
+                  )}
+                </div>
+              ))}
             </>
-      )}
-          </div>
-        ))}
-      </div>
+          )}
         </div>
+      </div>
     </>
   );
-};
+  };
 
 export default Info;
