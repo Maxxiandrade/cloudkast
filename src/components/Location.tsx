@@ -9,7 +9,7 @@ const Location:React.FC<Props> = ({data}) => {
     if (!data) {
         return null; 
     }
-    console.log(data);
+  
     const { location } = data;
     if(!location){
         return null
