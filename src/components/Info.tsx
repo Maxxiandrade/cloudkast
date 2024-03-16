@@ -59,7 +59,7 @@ const Info: React.FC = () => {
       setLoading(true); // Establece loading en true al iniciar la solicitud
       try {
         const response = await axios.get(
-          `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${name}&days=1&aqi=no&alerts=no`
+          `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${name}&days=1&aqi=no&alerts=no`
         );
         setInfo(response.data.forecast.forecastday);
       } catch (error) {

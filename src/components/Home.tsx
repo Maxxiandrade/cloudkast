@@ -9,7 +9,7 @@ const API_KEY = import.meta.env.VITE_API_KEY
 
 const fetchData = async(place:string)=>{
   try {
-    const response = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${place}&aqi=no`)
+    const response = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${place}&aqi=no`)
     return response.data
   } catch (error) {
     return null
