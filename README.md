@@ -1,30 +1,13 @@
-# React + TypeScript + Vite
+cloudKast
+---------
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+cloudKast is a web application that allows you to check the weather of any city worldwide. With cloudKast, you can access detailed weather information including hourly forecasts, current temperature, wind speed, and more. Stay informed about the weather conditions throughout the day and plan your activities accordingly. Whether you're a traveler, outdoor enthusiast, or simply want to stay updated on the weather, cloudKast provides all the essential features you need to make informed decisions.
 
-Currently, two official plugins are available:
+Key Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   View weather information for any city worldwide.
+-   Access detailed hourly forecasts for accurate planning.
+-   Stay updated on current temperature and wind speed.
+-   User-friendly interface for seamless navigation and experience.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Get started with cloudKast today and never be caught off guard by the weather again!
