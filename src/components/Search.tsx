@@ -17,13 +17,14 @@ const Search:React.FC<Props> = ({onSearch}) => {
     }
         return (
     <form action="" onSubmit={handleSubmit}>
+        <label htmlFor="">cloudKast</label><br />
         <input
          type="text"
          onChange={handleChange} 
          name="place" 
          placeholder='Search for any place'
          value={place}/>
-        <button className="button">Buscar</button>    
+        <button className="button">Search</button>    
 
 
     </form>

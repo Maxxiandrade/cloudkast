@@ -11,7 +11,6 @@
 
 
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
   background-color: coral;
@@ -85,6 +84,7 @@ input:focus {
 
 body{
   font-family: nexa;
+  height: 100vh;
 }
 
 .hour-grid {
@@ -99,16 +99,45 @@ body{
   border-radius: 5px; /* Bordes redondeados */
 }
 
-.hour-time {
-  font-weight: bold; /* Hora en negrita */
+.hour-item {
+  width: 100px; /* Ajusta este valor según sea necesario */
+  /* Otros estilos como altura, margen, etc. */
 }
 
 .hour-condition {
-  margin-top: 5px; /* Espacio entre la hora y la condición */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .icon{
   height: 25px;
   
   padding-right: 5px;
+}
+
+.horizontal-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* Espacio entre los elementos */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para los elementos dentro del contenedor */
+.horizontal-container h2 {
+  margin: 0; /* Eliminar los márgenes por defecto de los elementos h2 */
+}
+
+.container {
+  position: relative;
+  height: 93vh;
+}
+
+.astro-container {
+  position: relative;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* Asegura que el componente Astro esté por encima del contenido principal */
 }

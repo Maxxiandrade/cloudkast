@@ -16,33 +16,45 @@ const Weather: React.FC<Props> = ({data}) => {
 
         switch(data.current.condition.text.toLowerCase()) {
             case 'sunny':
-                color = '#D9E33A    ';
+                color = '#D9E33A';
                 opacity = 1;
                 break;
             case 'clear':
-                color = '#3A8CE3    ';
+                color = '#56A5E5';
                 opacity = 1;
                 break;
             case 'partly cloudy':
-                color = '#C8CBB2    ';
+                color = '#A0A18C';
                 opacity = 1;
                 break;
             case 'cloudy':
-                color = '#B7B8AB    ';
+                color = '#B7B8AB';
                 opacity = 1;
                 break;
             case 'overcast':
-                color = '#ACAE9C    ';
+                color = '#ACAE9C';
                 opacity = 1;
                 break;
             case 'mist':
-                color = '#EDEEE4    ';
+                color = '#EDEEE4';
+                opacity = 1;
+                break;
+            case 'patchy rain nearby':
+                color = '#7BB5BE    ';
+                opacity = 1;
+                break;
+            case 'light rain shower':
+                color = '#0C3F68    ';
+                opacity = 1;
+                break;
+            case 'light rain':
+                color = '#0C3F68    ';
                 opacity = 1;
                 break;
            
             default:
-                color = '#FFFFFF'; // Color de fondo predeterminado
-                opacity = 0.5; // Opacidad predeterminada
+                color = 'black'; // Color de fondo predeterminado
+                opacity = 0.8; // Opacidad predeterminada
         }
 
         body.style.transition = 'background-color 0.5s, opacity 0.5s'; // Transición suave
