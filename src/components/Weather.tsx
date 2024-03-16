@@ -10,7 +10,7 @@ const Weather: React.FC<Props> = ({data}) => {
     }
 
     const setBackground = () => {
-        const body: HTMLBodyElement = document.querySelector('body');
+        const body: HTMLBodyElement | null = document.querySelector('body');
         let color: string;
         let opacity: number;
 
@@ -57,9 +57,10 @@ const Weather: React.FC<Props> = ({data}) => {
                 opacity = 0.8; // Opacidad predeterminada
         }
 
+        if(body){
         body.style.transition = 'background-color 0.5s, opacity 0.5s'; // Transición suave
         body.style.backgroundColor = color;
-        body.style.opacity = opacity.toString();
+        body.style.opacity = opacity.toString();}
     }
 
     // Llama a setBackground cuando recibas los datos

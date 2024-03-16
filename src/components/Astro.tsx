@@ -1,6 +1,7 @@
+import { ForecastDay } from "./Info"
 
 interface Props{
-    info:object
+    info:ForecastDay
 }
 
 const Astro:React.FC<Props> = ({info}) => {
