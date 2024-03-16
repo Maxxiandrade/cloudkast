@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../App.css'
 import axios from 'axios';
 import { Data } from '../types';
@@ -17,10 +17,16 @@ const fetchData = async(place:string)=>{
 } 
 const Home = () => {
     const [data, setData] = useState<Data | null>(null);
+    useEffect(() => {
+        const storedData = localStorage.getItem('weatherData');
+        if (storedData) {
+          setData(JSON.parse(storedData));
+        }
+      }, []);
     const onSearch = async(place:string):Promise<void>=>{
       const result = await fetchData(place)
       setData(result)
-      console.log(result);
+      localStorage.setItem('weatherData', JSON.stringify(result))
       
     }
   return (

@@ -30,8 +30,8 @@ const Info: React.FC<Props> = ({ place }) => {
   const navigate = useNavigate()
   const [info, setInfo] = useState<ForecastDay[] | null>(null);
   const [toggleAstro, setToggleAstro] = useState(false);
-  const [metric, setMetric] = useState(false);
-  const fetchInfo = async (place: string) => {
+
+  const fetchInfo = async () => {
     try {
       const response = await axios.get(
         `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location.name}&days=1&aqi=no&alerts=no`
@@ -44,13 +44,16 @@ const Info: React.FC<Props> = ({ place }) => {
 
   useEffect(() => {
     const getInfo = async () => {
-      const data = await fetchInfo(place);
+      const data = await fetchInfo();
       if (data) {
         setInfo(data.forecast.forecastday);
       }
     };
     getInfo();
   }, [place]);
+
+
+
   const astroRef = useRef(null);
   const handleToggleAstro = () => {
     setToggleAstro(!toggleAstro);
