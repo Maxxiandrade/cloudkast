@@ -15,25 +15,38 @@ const fetchData = async(place:string)=>{
     return null
   }
 } 
-const Home = () => {
+
+interface Props{
+  currentLocation: string
+}
+
+const Home:React.FC<Props> = ({currentLocation}) => {
     const [data, setData] = useState<Data | null>(null);
+
     useEffect(() => {
+      if(currentLocation != ''){
+         fetchData(currentLocation).then((result)=>setData(result))
+         console.log('Se seteo!!');
+         
+        }
         const storedData = localStorage.getItem('weatherData');
         if (storedData) {
           setData(JSON.parse(storedData));
         }
-      }, []);
+      }, [currentLocation]);
+      
     const onSearch = async(place:string):Promise<void>=>{
       const result = await fetchData(place)
       setData(result)
       localStorage.setItem('weatherData', JSON.stringify(result))
       
     }
+
   return (
     <div className='card-container'>
       <div className='card-div'>
         <Weather data={data}/>
-        <Search onSearch={onSearch}/>
+        <Search onSearch={onSearch} />
         <Location data={data}/>
       </div>
     </div>

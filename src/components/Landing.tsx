@@ -1,8 +1,8 @@
 import { NavigateFunction, useNavigate } from "react-router-dom"
 import '../App.css'
-
 const Landing = () => {
     const navigate: NavigateFunction = useNavigate()
+
   return (
     <>
     <h1>Welcome to cloudKast !</h1>
