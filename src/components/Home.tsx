@@ -26,7 +26,6 @@ const Home:React.FC<Props> = ({currentLocation}) => {
     useEffect(() => {
       if(currentLocation != ''){
          fetchData(currentLocation).then((result)=>setData(result))
-         console.log('Se seteo!!');
          
         }
         const storedData = localStorage.getItem('weatherData');

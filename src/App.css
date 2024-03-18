@@ -164,3 +164,9 @@ body{
     transform: rotate(.5turn);
   }
 }
+
+
+.random-icon {
+  height: 18px;
+  vertical-align: middle; /* Alinea verticalmente con el texto */
+}

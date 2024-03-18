@@ -1,5 +1,6 @@
 import { useState } from "react"
-
+import random from '../../public/random.svg'
+import randomCountries from '../random-countries'
 interface Props{
     onSearch: (place:string) => Promise<void>
 }
@@ -15,6 +16,13 @@ const Search:React.FC<Props> = ({onSearch}) => {
         const {value} = e.target
         setPlace(value);
     }
+
+    const handleRandom = ()=>{
+        const randomNumber = Math.random()
+        const cityNumber = Math.floor(randomNumber * 241)       
+        onSearch(randomCountries[cityNumber]); 
+        
+    }
         return (
     <form action="" onSubmit={handleSubmit}>
         <label htmlFor="">cloudKast</label><br />
@@ -24,11 +32,12 @@ const Search:React.FC<Props> = ({onSearch}) => {
          name="place" 
          placeholder='Search for any place'
          value={place}/>
-        <button className="button">Search</button>    
-
-
-    </form>
-    
+        <button className="button">Search</button>
+        <br />    
+            <button  type="button" className="button" onClick={handleRandom}>
+                <img src={random} alt="random_icon" className="random-icon" />Random
+            </button>    
+    </form> 
   )
 }
 
